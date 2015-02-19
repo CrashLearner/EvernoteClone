@@ -1,0 +1,3 @@
+- @notes.each do |note|
+	%h2= link_to note.title, note
+	%p= time_ago_in_words(note.created_at)
