@@ -1,0 +1,23 @@
+!!!
+%html
+%head
+	%title EVEREVERNOTE | Your Life's Work!
+	= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true 
+	= javascript_include_tag 'application', 'data-turbolinks-track' => true 
+	= csrf_meta_tags
+%body
+	%header
+		.header_inner
+			= link_to "EVEREVERNOTE", root_path, id: "logo"
+			%nav
+				- if user_signed_in?
+					= link_to "New Note", new_note_path
+					= link_to "Sign Out", destroy_user_session_path, method: :delete 
+
+				- else
+					= link_to "Log In", new_user_session_path
+	%p.notice= notice
+	%p.alert= alert
+
+	= yield
+
